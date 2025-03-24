@@ -4,6 +4,16 @@ A new Flutter project.
 
 ## Getting Started
 
+
+
+# Updated the project backlog
+# Amy - I add some of the things we need
+
+Google Doc below for Planning
+# https://docs.google.com/document/d/1N9U8Xy_IOPDotiTANVrWfaVh4VCG21z8CFWCdJgLUfc/edit?usp=sharing
+
+
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
