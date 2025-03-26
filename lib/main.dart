@@ -117,14 +117,79 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 // Screen Widgets
-class MapScreen extends StatelessWidget {
+class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
+
+  @override
+  State<MapScreen> createState() => _MapScreenState();
+}
+
+class _MapScreenState extends State<MapScreen> {
+  int _currentFloor = 1;
+  final List<String> _floorImages = [
+    '1stfloor.jpg',
+    '2ndfloor.jpg',
+    '3rdfloor.jpg',
+  ];
+
+  void _nextFloor() {
+    setState(() {
+      if (_currentFloor < 3) {
+        _currentFloor++;
+      }
+    });
+  }
+
+  void _previousFloor() {
+    setState(() {
+      if (_currentFloor > 1) {
+        _currentFloor--;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Map')),
-      body: const Center(child: Text('Map Screen')),
+      body: Column(
+        children: [
+          Expanded(
+            child: Image.asset(
+              _floorImages[_currentFloor - 1],
+              fit: BoxFit.contain,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: _currentFloor > 1 ? _previousFloor : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF461D7C),
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text('Previous Floor'),
+                ),
+                Text(
+                  'Floor $_currentFloor',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                ElevatedButton(
+                  onPressed: _currentFloor < 3 ? _nextFloor : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF461D7C),
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text('Next Floor'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
