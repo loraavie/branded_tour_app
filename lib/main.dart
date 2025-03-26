@@ -241,9 +241,35 @@ class HelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(title: const Text('Help')),
-      body: const Center(child: Text('Help Screen')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const Center(
+              child: Text("We're here to help", style: TextStyle(fontSize: 18)),
+            ),
+            const SizedBox(height: 20),
+
+            // Search bar
+            TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                labelText: 'Search for help...',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.search),
+              ),
+              onChanged: (query) {
+                // Optional: implement keyword search within your help content
+              },
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
     );
   }
 }
