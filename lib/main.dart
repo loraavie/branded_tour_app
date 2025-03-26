@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -430,16 +431,18 @@ class TutorialVideoScreen extends StatefulWidget {
 }
 
 class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
-  late VideoPlayerController _controller;
+  late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/tutorial.mp4')
-      ..initialize().then((_) {
-        setState(() {}); // Refresh when loaded
-        _controller.play();
-      });
+    const videoUrl = 'https://youtu.be/DYzT-Pk6Ogw?si=7QEaf5pykbMKgvdn';
+    final videoId = YoutubePlayer.convertUrlToId(videoUrl)!;
+
+    _controller = YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
+    );
   }
 
   @override
@@ -450,29 +453,13 @@ class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Tutorial Video')),
-      body: Center(
-        child:
-            _controller.value.isInitialized
-                ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-                : const CircularProgressIndicator(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
-      ),
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(controller: _controller),
+      builder:
+          (context, player) => Scaffold(
+            appBar: AppBar(title: const Text('Tutorial Video')),
+            body: Center(child: player),
+          ),
     );
   }
 }
