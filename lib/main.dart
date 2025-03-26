@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -307,7 +308,99 @@ class HelpScreen extends StatelessWidget {
               label: const Text('Leave a Rating'),
             ),
             const SizedBox(height: 10),
+
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TutorialVideoScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.play_circle_fill),
+              label: const Text('Watch Tutorial Video'),
+            ),
+            // Report a Bug
+            ElevatedButton.icon(
+              onPressed: () {
+                // Replace with your bug report logic or URL
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => AlertDialog(
+                        title: const Text('Report a Bug'),
+                        content: const Text(
+                          'Please email support@yourapp.com with a description of the bug.',
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                );
+              },
+              icon: const Icon(Icons.bug_report),
+              label: const Text('Report a Bug'),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class TutorialVideoScreen extends StatefulWidget {
+  const TutorialVideoScreen({super.key});
+
+  @override
+  State<TutorialVideoScreen> createState() => _TutorialVideoScreenState();
+}
+
+class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/tutorial.mp4')
+      ..initialize().then((_) {
+        setState(() {}); // Refresh when loaded
+        _controller.play();
+      });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tutorial Video')),
+      body: Center(
+        child:
+            _controller.value.isInitialized
+                ? AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: VideoPlayer(_controller),
+                )
+                : const CircularProgressIndicator(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _controller.value.isPlaying
+                ? _controller.pause()
+                : _controller.play();
+          });
+        },
+        child: Icon(
+          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
       ),
     );
