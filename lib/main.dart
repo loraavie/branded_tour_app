@@ -337,8 +337,99 @@ class HelpScreen extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20),
+
+            // FAQ Button
+            ElevatedButton.icon(
+              onPressed: () {
+                // Navigate to FAQ screen or show dialog
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => AlertDialog(
+                        title: const Text('FAQ'),
+                        content: const Text(
+                          'Q: How do I use the app?\nA: Here’s how...',
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      ),
+                );
+              },
+              icon: const Icon(Icons.question_answer),
+              label: const Text('FAQ'),
+            ),
+            const SizedBox(height: 10),
+            // Leave a Rating
+            ElevatedButton.icon(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const RatingSheet();
+                  },
+                );
+              },
+              icon: const Icon(Icons.star_rate),
+              label: const Text('Leave a Rating'),
+            ),
+            const SizedBox(height: 10),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class RatingSheet extends StatefulWidget {
+  const RatingSheet({super.key});
+
+  @override
+  State<RatingSheet> createState() => _RatingSheetState();
+}
+
+class _RatingSheetState extends State<RatingSheet> {
+  int _rating = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text('Rate our app!', style: TextStyle(fontSize: 18)),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(5, (index) {
+              return IconButton(
+                icon: Icon(
+                  index < _rating ? Icons.star : Icons.star_border,
+                  color: Colors.amber,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _rating = index + 1;
+                  });
+                },
+              );
+            }),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              // Save or send rating somewhere
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Thanks for rating us $_rating stars!')),
+              );
+            },
+            child: const Text('Submit'),
+          ),
+        ],
       ),
     );
   }
