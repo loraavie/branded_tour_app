@@ -341,80 +341,104 @@ class HelpScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // FAQ Button
-            ElevatedButton.icon(
-              onPressed: () {
-                // Navigate to FAQ screen or show dialog
-                showDialog(
-                  context: context,
-                  builder:
-                      (context) => AlertDialog(
-                        title: const Text('FAQ'),
-                        content: const Text(
-                          'Q: How do I use the app?\nA: Here’s how...',
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: const Text('Close'),
-                          ),
-                        ],
-                      ),
-                );
-              },
-              icon: const Icon(Icons.question_answer),
-              label: const Text('FAQ'),
-            ),
-            const SizedBox(height: 10),
-            // Leave a Rating
-            ElevatedButton.icon(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return const RatingSheet();
-                  },
-                );
-              },
-              icon: const Icon(Icons.star_rate),
-              label: const Text('Leave a Rating'),
-            ),
-            const SizedBox(height: 10),
-
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TutorialVideoScreen(),
+            Wrap(
+              spacing: 12.0, // horizontal spacing between buttons
+              runSpacing: 12.0, // vertical spacing between rows
+              alignment: WrapAlignment.center,
+              children: [
+                SizedBox(
+                  width:
+                      MediaQuery.of(context).size.width *
+                      0.4, // adjust width as needed
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Navigate to FAQ screen or show dialog
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                              title: const Text('FAQ'),
+                              content: const Text(
+                                'Q: How do I use the app?\nA: Here’s how...',
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text('Close'),
+                                ),
+                              ],
+                            ),
+                      );
+                    },
+                    icon: const Icon(Icons.question_answer),
+                    label: const Text('FAQ'),
                   ),
-                );
-              },
-              icon: const Icon(Icons.play_circle_fill),
-              label: const Text('Watch Tutorial Video'),
-            ),
-            // Report a Bug
-            ElevatedButton.icon(
-              onPressed: () {
-                // Replace with your bug report logic or URL
-                showDialog(
-                  context: context,
-                  builder:
-                      (context) => AlertDialog(
-                        title: const Text('Report a Bug'),
-                        content: const Text(
-                          'Please email support@yourapp.com with a description of the bug.',
+                ),
+                // Leave a Rating
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => const RatingSheet(),
+                      );
+                    },
+                    icon: const Icon(Icons.star_rate),
+                    label: const Text('Leave a Rating'),
+                  ),
+                ),
+
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TutorialVideoScreen(),
                         ),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: const Text('OK'),
-                          ),
-                        ],
+                      );
+                    },
+                    icon: const Icon(Icons.play_circle_fill),
+                    label: const Text('Watch Tutorial Video'),
+                  ),
+                ),
+                // Report a Bug
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Replace with your bug report logic or URL
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                              title: const Text('Report a Bug'),
+                              content: const Text(
+                                'Please email support@yourapp.com with a description of the bug.',
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                      );
+                    },
+                    icon: const Icon(Icons.bug_report),
+                    label: const Text(
+                      'Report a Bug',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontFamily: "Proximanova",
+                        fontWeight: FontWeight.w400,
                       ),
-                );
-              },
-              icon: const Icon(Icons.bug_report),
-              label: const Text('Report a Bug'),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

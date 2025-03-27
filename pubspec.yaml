@@ -64,7 +64,6 @@ flutter:
     - assets/1stfloor.jpg
     - assets/2ndfloor.jpg
     - assets/3rdfloor.jpg
-    - assets/Hisashi Speech beginning.mov
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -77,7 +76,28 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+      - family: Proximanova
+        fonts:
+          - asset: fonts/proximanova_black.otf
+            weight: 400
+          - asset: fonts/proximanova_black.ttf
+            weight: 300
+            style: italic
+          - asset: fonts/proximanova_blackit.otf
+            weight: 700
+          - asset: fonts/proximanova_bold.otf
+            weight: 700
+          - asset: fonts/proximanova_boldit.otf
+            weight: 700
+            style: italic
+          - asset: fonts/proximanova_extrabold.otf
+            weight: 800
+          - asset: fonts/proximanova_light.otf
+            weight: 300
+          - asset: fonts/proximanova_regular.ttf
+            weight: 400
+
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
