@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 void main() {
@@ -572,7 +571,7 @@ class FirstFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => QuestionScreen(questionNumber: i),
+                              (context) => QuestionScreen(questionNumber: i, floor: 1),
                         ),
                       );
                     },
@@ -602,8 +601,9 @@ class FirstFloorScreen extends StatelessWidget {
 
 class QuestionScreen extends StatelessWidget {
   final int questionNumber;
+  final int floor;
 
-  const QuestionScreen({super.key, required this.questionNumber});
+  const QuestionScreen({super.key, required this.questionNumber, required this.floor});
 
   @override
   Widget build(BuildContext context) {
@@ -660,6 +660,7 @@ class SecondFloorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MainLayout(
       selectedIndex: 1,
       onItemTapped: (index) {
@@ -688,7 +689,7 @@ class SecondFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => QuestionScreen(questionNumber: i),
+                              (context) => QuestionScreen(questionNumber: i, floor:2),
                         ),
                       );
                     },
@@ -749,7 +750,7 @@ class ThirdFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => QuestionScreen(questionNumber: i),
+                              (context) => QuestionScreen(questionNumber: i, floor: 3),
                         ),
                       );
                     },
