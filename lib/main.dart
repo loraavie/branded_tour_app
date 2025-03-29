@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:video_player/video_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -413,10 +413,10 @@ List<HelpButtonData> _helpButtons(BuildContext context) {
       label: 'Watch Tutorial',
       icon: Icons.play_circle_fill,
       onPressed: () {
-        /*Navigator.push(
+        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const TutorialVideoScreen()),
-        );*/
+          MaterialPageRoute(builder: (context) => const TutorialVideoDialog()),
+        );
       },
     ),
     HelpButtonData(
@@ -566,24 +566,24 @@ class _HelpScreenState extends State<HelpScreen> {
   }
 }
 
-/*class TutorialVideoScreen extends StatefulWidget {
-  const TutorialVideoScreen({super.key});
+class TutorialVideoDialog extends StatefulWidget {
+  const TutorialVideoDialog({super.key});
 
   @override
-  State<TutorialVideoScreen> createState() => _TutorialVideoScreenState();
-}*/
+  State<TutorialVideoDialog> createState() => _TutorialVideoDialogState();
+}
 
-/*class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
+class _TutorialVideoDialogState extends State<TutorialVideoDialog> {
   late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    //const videoUrl = 'https://youtu.be/DYzT-Pk6Ogw?si=7QEaf5pykbMKgvdn';
-    //final videoId = YoutubePlayer.convertUrlToId(videoUrl)!;
 
-    //_controller = YoutubePlayerController.network('assets/lsuapptutorial.mp4')
-      //..initialize().then((_) {
+    _controller = VideoPlayerController.network(
+        'https://raw.githubusercontent.com/loraavie/branded_tour_app/bcea1741a540b5f914922875adb244192c15e56e/assets/lsuapptutorial.mp4',
+      )
+      ..initialize().then((_) {
         setState(() {}); // update the UI when video is ready
         _controller.play();
       });
@@ -597,32 +597,30 @@ class _HelpScreenState extends State<HelpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Tutorial Video')),
-      body: Center(
+    return AlertDialog(
+      contentPadding: const EdgeInsets.all(8),
+      content: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: 250,
         child:
             _controller.value.isInitialized
                 ? AspectRatio(
                   aspectRatio: _controller.value.aspectRatio,
                   child: VideoPlayer(_controller),
                 )
-                : const CircularProgressIndicator(),
+                : const Center(child: CircularProgressIndicator()),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Close'),
         ),
-      ),
+      ],
     );
   }
-}*/
+}
 
 class RatingSheet extends StatefulWidget {
   const RatingSheet({super.key});
