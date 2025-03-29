@@ -308,136 +308,200 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HelpScreen extends StatelessWidget {
+class HelpButtonData {
+  final String label;
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  HelpButtonData({
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+  });
+}
+
+List<HelpButtonData> _helpButtons(BuildContext context) {
+  return [
+    HelpButtonData(
+      label: 'FAQ',
+      icon: Icons.question_answer,
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder:
+              (context) => AlertDialog(
+                title: const Text('FAQ'),
+                content: const Text(
+                  'Q: How do I use the app?\nA: Here’s how...',
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Close'),
+                  ),
+                ],
+              ),
+        );
+      },
+    ),
+    HelpButtonData(
+      label: 'Leave a Rating',
+      icon: Icons.star_rate,
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) => const RatingSheet(),
+        );
+      },
+    ),
+    HelpButtonData(
+      label: 'Watch Tutorial',
+      icon: Icons.play_circle_fill,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const TutorialVideoScreen()),
+        );
+      },
+    ),
+    HelpButtonData(
+      label: 'Report a Bug',
+      icon: Icons.bug_report,
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder:
+              (context) => AlertDialog(
+                title: const Text('Report a Bug'),
+                content: const Text(
+                  'Please email antoinekaleb6@gmail.com with a description of the bug.',
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
+        );
+      },
+    ),
+  ];
+}
+
+class HelpScreen extends StatefulWidget {
   const HelpScreen({super.key});
 
   @override
+  State<HelpScreen> createState() => _HelpScreenState();
+}
+
+class _HelpScreenState extends State<HelpScreen> {
+  final TextEditingController searchController = TextEditingController();
+  List<HelpButtonData> allButtons = [];
+  List<HelpButtonData> filteredButtons = [];
+
+  @override
+  void initState() {
+    super.initState();
+    allButtons = _helpButtons(context);
+    filteredButtons = List.from(allButtons);
+    searchController.addListener(_onSearchChanged);
+  }
+
+  void _onSearchChanged() {
+    final query = searchController.text.toLowerCase();
+    setState(() {
+      filteredButtons =
+          allButtons
+              .where((button) => button.label.toLowerCase().contains(query))
+              .toList();
+    });
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final TextEditingController searchController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(title: const Text('Help')),
+      backgroundColor: Color(0xFFF1EED8),
+      appBar: AppBar(title: const Text('Help Center')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const Center(
-              child: Text("We're here to help", style: TextStyle(fontSize: 18)),
+              child: Text(
+                "We're here to help",
+                style: TextStyle(
+                  fontSize: 60,
+                  fontFamily: "Proximanova",
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 80),
 
             // Search bar
-            TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                labelText: 'Search for help...',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.search),
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: TextField(
+                  controller: searchController,
+                  decoration: InputDecoration(
+                    labelText: 'Search for help...',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    suffixIcon: Icon(Icons.search),
+                  ),
+                ),
               ),
-              onChanged: (query) {
-                // Optional: implement keyword search within your help content
-              },
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
 
             // FAQ Button
             Wrap(
-              spacing: 12.0, // horizontal spacing between buttons
-              runSpacing: 12.0, // vertical spacing between rows
+              spacing: 16.0,
+              runSpacing: 16.0,
               alignment: WrapAlignment.center,
               children: [
-                SizedBox(
-                  width:
-                      MediaQuery.of(context).size.width *
-                      0.4, // adjust width as needed
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      // Navigate to FAQ screen or show dialog
-                      showDialog(
-                        context: context,
-                        builder:
-                            (context) => AlertDialog(
-                              title: const Text('FAQ'),
-                              content: const Text(
-                                'Q: How do I use the app?\nA: Here’s how...',
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text('Close'),
-                                ),
-                              ],
-                            ),
-                      );
-                    },
-                    icon: const Icon(Icons.question_answer),
-                    label: const Text('FAQ'),
-                  ),
-                ),
-                // Leave a Rating
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) => const RatingSheet(),
-                      );
-                    },
-                    icon: const Icon(Icons.star_rate),
-                    label: const Text('Leave a Rating'),
-                  ),
-                ),
-
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TutorialVideoScreen(),
+                for (var buttonData in filteredButtons)
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.44,
+                    height: 120,
+                    child: ElevatedButton.icon(
+                      onPressed: buttonData.onPressed,
+                      icon: Icon(buttonData.icon, size: 28),
+                      label: Text(
+                        buttonData.label,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w200,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'Proximanova',
                         ),
-                      );
-                    },
-                    icon: const Icon(Icons.play_circle_fill),
-                    label: const Text('Watch Tutorial Video'),
-                  ),
-                ),
-                // Report a Bug
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      // Replace with your bug report logic or URL
-                      showDialog(
-                        context: context,
-                        builder:
-                            (context) => AlertDialog(
-                              title: const Text('Report a Bug'),
-                              content: const Text(
-                                'Please email support@yourapp.com with a description of the bug.',
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text('OK'),
-                                ),
-                              ],
-                            ),
-                      );
-                    },
-                    icon: const Icon(Icons.bug_report),
-                    label: const Text(
-                      'Report a Bug',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontFamily: "Proximanova",
-                        fontWeight: FontWeight.w400,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: const EdgeInsets.all(12),
+                        backgroundColor: Theme.of(
+                          context,
+                        ).colorScheme.primary.withOpacity(0.1),
+                        foregroundColor: Theme.of(context).colorScheme.primary,
+                        elevation: 0,
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ],
