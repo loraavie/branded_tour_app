@@ -37,10 +37,22 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF461D7C),
           foregroundColor: Colors.white, // For text and icons
+          titleTextStyle: TextStyle(
+            fontFamily: 'ProximaNova',
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Color(0xFF461D7C),
           unselectedItemColor: Colors.grey,
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontFamily: 'ProximaNova'),
+          bodyMedium: TextStyle(fontFamily: 'ProximaNova'),
+          titleLarge: TextStyle(fontFamily: 'ProximaNova'),
+          headlineMedium: TextStyle(fontFamily: 'ProximaNova'),
         ),
       ),
       home: const MainScreen(),
@@ -358,7 +370,7 @@ class HelpScreen extends StatelessWidget {
                             (context) => AlertDialog(
                               title: const Text('FAQ'),
                               content: const Text(
-                                'Q: How do I use the app?\nA: Here’s how...',
+                                'Q: How do I use the app?\nA: Here\'s how...',
                               ),
                               actions: [
                                 TextButton(
@@ -431,7 +443,7 @@ class HelpScreen extends StatelessWidget {
                       'Report a Bug',
                       style: TextStyle(
                         fontSize: 30,
-                        fontFamily: "Proximanova",
+                        fontFamily: "ProximaNova",
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -571,7 +583,8 @@ class FirstFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => QuestionScreen(questionNumber: i, floor: 1),
+                              (context) =>
+                                  QuestionScreen(questionNumber: i, floor: 1),
                         ),
                       );
                     },
@@ -603,7 +616,11 @@ class QuestionScreen extends StatelessWidget {
   final int questionNumber;
   final int floor;
 
-  const QuestionScreen({super.key, required this.questionNumber, required this.floor});
+  const QuestionScreen({
+    super.key,
+    required this.questionNumber,
+    required this.floor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -660,7 +677,6 @@ class SecondFloorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MainLayout(
       selectedIndex: 1,
       onItemTapped: (index) {
@@ -689,7 +705,8 @@ class SecondFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => QuestionScreen(questionNumber: i, floor:2),
+                              (context) =>
+                                  QuestionScreen(questionNumber: i, floor: 2),
                         ),
                       );
                     },
@@ -750,7 +767,8 @@ class ThirdFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) => QuestionScreen(questionNumber: i, floor: 3),
+                              (context) =>
+                                  QuestionScreen(questionNumber: i, floor: 3),
                         ),
                       );
                     },
