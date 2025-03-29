@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xFF461D7C),
           foregroundColor: Colors.white, // For text and icons
           titleTextStyle: TextStyle(
-            fontFamily: 'ProximaNova',
+            fontFamily: 'Proximanova',
             fontWeight: FontWeight.w800,
             fontSize: 20,
             color: Colors.white,
@@ -49,10 +49,22 @@ class MyApp extends StatelessWidget {
           unselectedItemColor: Colors.grey,
         ),
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(fontFamily: 'ProximaNova'),
-          bodyMedium: TextStyle(fontFamily: 'ProximaNova'),
-          titleLarge: TextStyle(fontFamily: 'ProximaNova'),
-          headlineMedium: TextStyle(fontFamily: 'ProximaNova'),
+          bodyLarge: TextStyle(
+            fontFamily: 'Proximanova',
+            fontWeight: FontWeight.w400,
+          ),
+          bodyMedium: TextStyle(
+            fontFamily: 'Proximanova',
+            fontWeight: FontWeight.w400,
+          ),
+          titleLarge: TextStyle(
+            fontFamily: 'Proximanova',
+            fontWeight: FontWeight.w700,
+          ),
+          headlineMedium: TextStyle(
+            fontFamily: 'Proximanova',
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
       home: const MainScreen(),
@@ -184,11 +196,21 @@ class _MapScreenState extends State<MapScreen> {
                     backgroundColor: const Color(0xFF461D7C),
                     foregroundColor: Colors.white,
                   ),
-                  child: const Text('Previous Floor'),
+                  child: const Text(
+                    'Previous Floor',
+                    style: TextStyle(
+                      fontFamily: 'Proximanova',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
                 Text(
                   'Floor $_currentFloor',
-                  style: const TextStyle(fontSize: 20),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: _currentFloor < 3 ? _nextFloor : null,
@@ -196,7 +218,13 @@ class _MapScreenState extends State<MapScreen> {
                     backgroundColor: const Color(0xFF461D7C),
                     foregroundColor: Colors.white,
                   ),
-                  child: const Text('Next Floor'),
+                  child: const Text(
+                    'Next Floor',
+                    style: TextStyle(
+                      fontFamily: 'Proximanova',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -239,7 +267,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Instructions',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               const SizedBox(height: 20), // Spacing between buttons
@@ -262,7 +294,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'First Floor',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -285,7 +321,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Second Floor',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -308,7 +348,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Third Floor',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],
@@ -343,7 +387,7 @@ List<HelpButtonData> _helpButtons(BuildContext context) {
               (context) => AlertDialog(
                 title: const Text('FAQ'),
                 content: const Text(
-                  'Q: How do I use the app?\nA: Here’s how...',
+                  'Q: How do I use the app?\nA: Here\'s how...',
                 ),
                 actions: [
                   TextButton(
@@ -679,7 +723,11 @@ class FirstFloorScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Question $i',
-                      style: const TextStyle(fontSize: 20),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Proximanova',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -728,7 +776,11 @@ class QuestionScreen extends StatelessWidget {
               children: [
                 Text(
                   'This is a placeholder for Question $questionNumber',
-                  style: const TextStyle(fontSize: 24),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w400,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
@@ -742,7 +794,13 @@ class QuestionScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text('Back'),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(
+                      fontFamily: 'Proximanova',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -801,7 +859,11 @@ class SecondFloorScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Question $i',
-                      style: const TextStyle(fontSize: 20),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Proximanova',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -863,7 +925,11 @@ class ThirdFloorScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Question $i',
-                      style: const TextStyle(fontSize: 20),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Proximanova',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -904,52 +970,92 @@ class InstructionsScreen extends StatelessWidget {
             children: [
               const Text(
                 'Welcome to the Scavenger Hunt!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               const SizedBox(height: 20),
               const Text(
                 'How to Play:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
                 '1. Select a floor from the home screen',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
                 '2. Choose a question from that floor',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
                 '3. Use the map to find the location mentioned in the question',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
                 '4. Visit the location and look for information to answer the question',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               const SizedBox(height: 20),
               const Text(
                 'Need Help?',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
                 '• Use the map screen to navigate between floors and find locations',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
                 '• Visit the help screen if you get stuck or need assistance',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               const SizedBox(height: 20),
               const Text(
                 'Good Luck!',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ],
           ),
