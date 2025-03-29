@@ -36,12 +36,12 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF461D7C),
-          foregroundColor: Colors.white, // For text and icons
+          foregroundColor: Color(0xFFFDD023), // For text and icons
           titleTextStyle: TextStyle(
             fontFamily: 'Proximanova',
             fontWeight: FontWeight.w800,
             fontSize: 20,
-            color: Colors.white,
+            color: Color(0xFFFDD023),
           ),
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
           ),
           headlineMedium: TextStyle(
             fontFamily: 'Proximanova',
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w800,
           ),
         ),
       ),
@@ -194,7 +194,7 @@ class _MapScreenState extends State<MapScreen> {
                   onPressed: _currentFloor > 1 ? _previousFloor : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: Colors.white,
+                    foregroundColor: const Color(0xFFFDD023),
                   ),
                   child: const Text(
                     'Previous Floor',
@@ -216,7 +216,7 @@ class _MapScreenState extends State<MapScreen> {
                   onPressed: _currentFloor < 3 ? _nextFloor : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: Colors.white,
+                    foregroundColor: const Color(0xFFFDD023),
                   ),
                   child: const Text(
                     'Next Floor',
@@ -241,7 +241,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(title: const Text('LSU Scavenger Hunt')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -259,7 +259,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: Colors.white,
+                  foregroundColor: const Color(0xFFFDD023),
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -286,7 +286,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: Colors.white,
+                  foregroundColor: const Color(0xFFFDD023),
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -313,7 +313,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: Colors.white,
+                  foregroundColor: const Color(0xFFFDD023),
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -340,7 +340,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: Colors.white,
+                  foregroundColor: const Color(0xFFFDD023),
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -715,7 +715,7 @@ class FirstFloorScreen extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: Colors.white,
+                      foregroundColor: const Color(0xFFFDD023),
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -788,7 +788,7 @@ class QuestionScreen extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: Colors.white,
+                    foregroundColor: const Color(0xFFFDD023),
                     minimumSize: const Size(200, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -851,7 +851,7 @@ class SecondFloorScreen extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: Colors.white,
+                      foregroundColor: const Color(0xFFFDD023),
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -917,7 +917,7 @@ class ThirdFloorScreen extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: Colors.white,
+                      foregroundColor: const Color(0xFFFDD023),
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -969,11 +969,12 @@ class InstructionsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Welcome to the Scavenger Hunt!',
+                'Welcome to the LSU Scavenger Hunt!',
                 style: TextStyle(
                   fontSize: 24,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 20),
@@ -983,15 +984,17 @@ class InstructionsScreen extends StatelessWidget {
                   fontSize: 20,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 10),
               const Text(
-                '1. Select a floor from the home screen',
+                '1. Select a floor of Patrick F. Taylor Hall to explore',
                 style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 10),
@@ -1001,15 +1004,17 @@ class InstructionsScreen extends StatelessWidget {
                   fontSize: 16,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 10),
               const Text(
-                '3. Use the map to find the location mentioned in the question',
+                '3. Find the location mentioned in the question',
                 style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 10),
@@ -1019,6 +1024,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontSize: 16,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 20),
@@ -1028,6 +1034,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontSize: 20,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 10),
@@ -1037,6 +1044,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontSize: 16,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 10),
@@ -1046,15 +1054,17 @@ class InstructionsScreen extends StatelessWidget {
                   fontSize: 16,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
+                  color: Color(0xFF461D7C),
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Good Luck!',
+                'Good Luck and Geaux Tigers!',
                 style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
+                  color: Color(0xFF461D7C),
                 ),
               ),
             ],
