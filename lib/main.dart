@@ -358,10 +358,10 @@ List<HelpButtonData> _helpButtons(BuildContext context) {
       label: 'Watch Tutorial',
       icon: Icons.play_circle_fill,
       onPressed: () {
-        Navigator.push(
+        /*Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const TutorialVideoScreen()),
-        );
+        );*/
       },
     ),
     HelpButtonData(
@@ -511,26 +511,27 @@ class _HelpScreenState extends State<HelpScreen> {
   }
 }
 
-class TutorialVideoScreen extends StatefulWidget {
+/*class TutorialVideoScreen extends StatefulWidget {
   const TutorialVideoScreen({super.key});
 
   @override
   State<TutorialVideoScreen> createState() => _TutorialVideoScreenState();
-}
+}*/
 
-class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
-  late YoutubePlayerController _controller;
+/*class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    const videoUrl = 'https://youtu.be/DYzT-Pk6Ogw?si=7QEaf5pykbMKgvdn';
-    final videoId = YoutubePlayer.convertUrlToId(videoUrl)!;
+    //const videoUrl = 'https://youtu.be/DYzT-Pk6Ogw?si=7QEaf5pykbMKgvdn';
+    //final videoId = YoutubePlayer.convertUrlToId(videoUrl)!;
 
-    _controller = YoutubePlayerController(
-      initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
-    );
+    //_controller = YoutubePlayerController.network('assets/lsuapptutorial.mp4')
+      //..initialize().then((_) {
+        setState(() {}); // update the UI when video is ready
+        _controller.play();
+      });
   }
 
   @override
@@ -541,16 +542,32 @@ class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayerBuilder(
-      player: YoutubePlayer(controller: _controller),
-      builder:
-          (context, player) => Scaffold(
-            appBar: AppBar(title: const Text('Tutorial Video')),
-            body: Center(child: player),
-          ),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tutorial Video')),
+      body: Center(
+        child:
+            _controller.value.isInitialized
+                ? AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: VideoPlayer(_controller),
+                )
+                : const CircularProgressIndicator(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _controller.value.isPlaying
+                ? _controller.pause()
+                : _controller.play();
+          });
+        },
+        child: Icon(
+          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        ),
+      ),
     );
   }
-}
+}*/
 
 class RatingSheet extends StatefulWidget {
   const RatingSheet({super.key});
