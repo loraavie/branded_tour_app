@@ -853,7 +853,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
   ];
   List<List<String>> thirdFloorChoices = [
     //3stQ
-    ];
+    ["1st Floor","2nd Floor","3rd Floor","All of Them"],
+    ["3260","3261","3289","3301"],
+    ["3400","3261","3260","3316"],
+    ["Tesla Coil","Electromagnetic Coil LSU","Musical Tesla Coil","Prototype Tesla Coil"]];
 
 
 
