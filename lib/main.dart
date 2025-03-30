@@ -400,7 +400,7 @@ List<HelpButtonData> _helpButtons(BuildContext context) {
               (context) => AlertDialog(
                 title: const Text('FAQ'),
                 content: const Text(
-                  'Q: How do I use the app?\nA: Here\'s how...',
+                  'Q: How do I use the app?\nA: Use the map page and question guidance to navigate the PFT and complete the questions!\nQ: I\'m feeling stuck on how to use the app. What should I do?\nA: Check out the tutorial video or email antoinekaleb6@gmail.com for help. \nQ: How do I report a bug?\nA: Email antoinekaleb6@gmail.com with a description of the bug. ',
                 ),
                 actions: [
                   TextButton(
@@ -498,81 +498,86 @@ class _HelpScreenState extends State<HelpScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFF1EED8),
       appBar: AppBar(title: const Text('Help Center')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const Center(
-              child: Text(
-                "We're here to help",
-                style: TextStyle(
-                  fontSize: 60,
-                  fontFamily: "Proximanova",
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-            ),
-            const SizedBox(height: 80),
-
-            // Search bar
-            Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: TextField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                    labelText: 'Search for help...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    suffixIcon: Icon(Icons.search),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              const Center(
+                child: Text(
+                  "We're here to help",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: "Proximanova",
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 30),
+              const SizedBox(height: 40),
 
-            // FAQ Button
-            Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
-              alignment: WrapAlignment.center,
-              children: [
-                for (var buttonData in filteredButtons)
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.44,
-                    height: 120,
-                    child: ElevatedButton.icon(
-                      onPressed: buttonData.onPressed,
-                      icon: Icon(buttonData.icon, size: 28),
-                      label: Text(
-                        buttonData.label,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w200,
-                          fontStyle: FontStyle.italic,
-                          fontFamily: 'Proximanova',
-                        ),
+              // Search bar
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      labelText: 'Search for help...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.all(12),
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primary.withOpacity(0.1),
-                        foregroundColor: Theme.of(context).colorScheme.primary,
-                        elevation: 0,
-                      ),
+                      suffixIcon: Icon(Icons.search),
                     ),
                   ),
-              ],
-            ),
-          ],
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              // Help Buttons
+              Wrap(
+                spacing: 16.0,
+                runSpacing: 16.0,
+                alignment: WrapAlignment.center,
+                children: [
+                  for (var buttonData in filteredButtons)
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.44,
+                      height: 100,
+                      child: ElevatedButton.icon(
+                        onPressed: buttonData.onPressed,
+                        icon: Icon(buttonData.icon, size: 24),
+                        label: Text(
+                          buttonData.label,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w200,
+                            fontStyle: FontStyle.italic,
+                            fontFamily: 'Proximanova',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: const EdgeInsets.all(12),
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.primary.withOpacity(0.1),
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          elevation: 0,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
@@ -898,27 +903,35 @@ final Map<String, QuestionData> questions = {
 
   // Third Floor Questions
   '3_1': QuestionData(
-    question: 'What is the name of the conference room on the third floor?',
-    imagePath: 'assets/conference_room.jpg',
+    question: 'Which one of these is a trophy contained in this trophy case?',
+    imagePath: 'Trophies.jpeg',
     options: [
-      'The Meeting Room',
-      'The Conference Center',
-      'The Board Room',
-      'The Assembly Room',
+      'Engineering Athletes Trophy',
+      'Extreme Physics Trophy',
+      'Canoe Racing Trophy',
+      'Engineering Olympiad Trophy',
     ],
     correctAnswer: 2,
   ),
   '3_2': QuestionData(
-    question: 'What is the name of the faculty office area on the third floor?',
-    imagePath: 'assets/faculty_offices.jpg',
-    options: [
-      'The Faculty Wing',
-      'The Professor\'s Area',
-      'The Academic Offices',
-      'The Faculty Section',
-    ],
+    question: 'What room on the third floor can this plane be found in?',
+    imagePath: 'airplane.jpeg',
+    options: ['3261', '3360', '3100', '3224'],
     correctAnswer: 0,
   ),
+  '3_3': QuestionData(
+    question:
+        'What is the name of the large copper colored device in this image?',
+    imagePath: 'teslacoil_farview.jpeg',
+    options: [
+      'Student Engineering Experience',
+      'Tesla Coil Lab',
+      'Experimental Tesla Coil',
+      'Musical Tesla Coil',
+    ],
+    correctAnswer: 3,
+  ),
+
   // Add more questions for third floor...
 };
 
