@@ -216,16 +216,6 @@ class _MapScreenState extends State<MapScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-
-                Text(
-                  'Floor $_currentFloor',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-
                 ElevatedButton(
                   onPressed: _currentFloor < 3 ? _nextFloor : null,
                   style: ElevatedButton.styleFrom(
@@ -846,25 +836,21 @@ final Map<String, QuestionData> questions = {
 
   // Second Floor Questions
   '2_1': QuestionData(
-    question: 'What is the name of the computer lab on the second floor?',
-    imagePath: 'assets/computer_lab.jpg',
+    question:
+        'Locate the one lab that is on both the first and second floor. What does it contain?',
+    imagePath: 'discolumn.webp',
     options: [
-      'The Digital Lab',
-      'The Computing Center',
-      'The Tech Hub',
-      'The Computer Room',
+      'Distillation Columns',
+      'Hadron Collider',
+      'Hydraulic Press',
+      'Chemical Storage Columns',
     ],
     correctAnswer: 0,
   ),
   '2_2': QuestionData(
-    question: 'What is the name of the study area on the second floor?',
-    imagePath: 'study_area.jpg',
-    options: [
-      'The Study Zone',
-      'The Learning Center',
-      'The Academic Space',
-      'The Study Room',
-    ],
+    question: 'Where on the second floor can you find this car?',
+    imagePath: 'car.webp',
+    options: ['2210', '2214', '2215', '2224'],
     correctAnswer: 1,
   ),
   '2_3': QuestionData(
@@ -930,6 +916,25 @@ final Map<String, QuestionData> questions = {
       'Musical Tesla Coil',
     ],
     correctAnswer: 3,
+  ),
+  '3_4': QuestionData(
+    question:
+        'How many stairwells on the third floor lead to the fourth floor?',
+    imagePath: 'lsulogo.png',
+    options: ['None', '1', '2', '3'],
+    correctAnswer: 1,
+  ),
+  '3_5': QuestionData(
+    question:
+        'Which one of these professors have an office on the third floor of the PFT?',
+    imagePath: 'lsulogo.png',
+    options: [
+      'Harmut Kaiser',
+      'Rahul Shah',
+      'Golden Richard III',
+      'David Bowles',
+    ],
+    correctAnswer: 1,
   ),
 
   // Add more questions for third floor...
