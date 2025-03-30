@@ -920,14 +920,14 @@ final Map<String, QuestionData> questions = {
   '3_4': QuestionData(
     question:
         'How many stairwells on the third floor lead to the fourth floor?',
-    imagePath: 'lsulogo.png',
+    imagePath: 'pft.jpg',
     options: ['None', '1', '2', '3'],
     correctAnswer: 1,
   ),
   '3_5': QuestionData(
     question:
         'Which one of these professors have an office on the third floor of the PFT?',
-    imagePath: 'lsulogo.png',
+    imagePath: 'pft.jpg',
     options: [
       'Harmut Kaiser',
       'Rahul Shah',
