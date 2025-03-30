@@ -493,7 +493,6 @@ class _HelpScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1EED8),
       appBar: AppBar(title: const Text('Help Center')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -504,10 +503,10 @@ class _HelpScreenState extends State<HelpScreen> {
               child: Text(
                 "We're here to help",
                 style: TextStyle(
-                  fontSize: 60,
+                  fontSize: 30,
                   fontFamily: "Proximanova",
-                  fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w900,
+                  color: Color(0xFFD29F13),
                 ),
               ),
             ),
@@ -559,11 +558,10 @@ class _HelpScreenState extends State<HelpScreen> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.all(12),
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primary.withOpacity(0.1),
-                        foregroundColor: Theme.of(context).colorScheme.primary,
-                        elevation: 0,
+                        backgroundColor: Color(0xFF461D7C),
+                        foregroundColor: Color(0xFFFDD023),
+
+                        elevation: 20,
                       ),
                     ),
                   ),
