@@ -797,12 +797,20 @@ class _FirstFloorScreenState extends State<FirstFloorScreen> {
 
 class QuestionScreen extends StatefulWidget {
   final List<List<String>> tableData = const [
-    ];
+    ["In what room are the Bengal Bots in?", "What is the name of the group of which this symbol belongs?", "Can you purchase monster energy drinks on this floor?",
+      "In what room is the Fanuc Robatic Arm?","In what floor can you purchase bluebooks?"],
+    ["What is the room number that contains the Among Us artwork on a whiteboard?", "What room contains the MMR machine?","What is the name of the LSU Mascot?"],
+    ["Which floor can the wall of trophies be found?", "What is the office number that contains the model airplane?", "Which room number has this funny chart placed on its door?","Which is the full name of this coil?"],
+  ];
   final List<List<String>> pictureData = const [
-
+    ['weirdchartUNSURE.jpeg', 'BetaSign.jpeg','EnergyDrinks.jpeg','RoboaticArm.jpeg','BlueBook.png'],
+    ['AmungUs.jpeg','MMRmachine.jpeg', 'LSUtiger.png'],
+    ['Trophies.jpeg', 'airplane.jpeg','UnknownChart.jpeg','teslacoil_farview.jpeg']
   ];
   final List<List<String>> answers = const [
-
+    ["1344", "Tau Beta Pi", "All of Them", "1300","1st Floor"],
+    ["2317", "2348","Mike"],
+    ["3rd Floor", "3261", "3316","Musical Tesla Coil"]
   ];
 
 
