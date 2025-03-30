@@ -179,6 +179,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF1EED8),
       appBar: AppBar(title: const Text('Map')),
       body: Column(
         children: [
@@ -254,6 +255,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF1EED8),
       appBar: AppBar(title: const Text('LSU Scavenger Hunt')),
       body: Center(
         child: Padding(
@@ -509,14 +511,14 @@ class _HelpScreenState extends State<HelpScreen> {
                 child: Text(
                   "We're here to help",
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 30,
                     fontFamily: "Proximanova",
-                    fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w900,
+                    color: Color(0xFFD29F13),
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 80),
 
               // Search bar
               Center(
@@ -545,15 +547,15 @@ class _HelpScreenState extends State<HelpScreen> {
                   for (var buttonData in filteredButtons)
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.44,
-                      height: 100,
+                      height: 120,
                       child: ElevatedButton.icon(
                         onPressed: buttonData.onPressed,
-                        icon: Icon(buttonData.icon, size: 24),
+                        icon: Icon(buttonData.icon, size: 28),
                         label: Text(
                           buttonData.label,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            fontSize: 24,
+                            fontSize: 30,
                             fontWeight: FontWeight.w200,
                             fontStyle: FontStyle.italic,
                             fontFamily: 'Proximanova',
@@ -564,12 +566,9 @@ class _HelpScreenState extends State<HelpScreen> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           padding: const EdgeInsets.all(12),
-                          backgroundColor: Theme.of(
-                            context,
-                          ).colorScheme.primary.withOpacity(0.1),
-                          foregroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          elevation: 0,
+                          backgroundColor: Color(0xFF461D7C),
+                          foregroundColor: Color(0xFFFDD023),
+                          elevation: 20,
                         ),
                       ),
                     ),
@@ -723,6 +722,7 @@ class _FirstFloorScreenState extends State<FirstFloorScreen> {
         }
       },
       child: Scaffold(
+        backgroundColor: const Color(0xFFF1EED8),
         appBar: AppBar(title: const Text('First Floor')),
         body: Center(
           child: Padding(
@@ -1245,6 +1245,7 @@ class _SecondFloorScreenState extends State<SecondFloorScreen> {
         }
       },
       child: Scaffold(
+        backgroundColor: const Color(0xFFF1EED8),
         appBar: AppBar(title: const Text('Second Floor')),
         body: Center(
           child: Padding(
@@ -1334,6 +1335,7 @@ class _ThirdFloorScreenState extends State<ThirdFloorScreen> {
         }
       },
       child: Scaffold(
+        backgroundColor: const Color(0xFFF1EED8),
         appBar: AppBar(title: const Text('Third Floor')),
         body: Center(
           child: Padding(
@@ -1410,6 +1412,7 @@ class InstructionsScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
+        backgroundColor: const Color(0xFFF1EED8),
         appBar: AppBar(title: const Text('Instructions')),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(20.0),
