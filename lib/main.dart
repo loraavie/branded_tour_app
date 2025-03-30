@@ -739,7 +739,89 @@ class FirstFloorScreen extends StatelessWidget {
   }
 }
 
-class QuestionScreen extends StatelessWidget {
+class QuestionData {
+  final String question;
+  final String imagePath;
+  final List<String> options;
+  final int correctAnswer;
+
+  const QuestionData({
+    required this.question,
+    required this.imagePath,
+    required this.options,
+    required this.correctAnswer,
+  });
+}
+
+final Map<String, QuestionData> questions = {
+  // First Floor Questions
+  '1_1': QuestionData(
+    question:
+        'What is the name of the main entrance room in Patrick F. Taylor Hall?',
+    imagePath: 'assets/entrance.jpg',
+    options: ['The Atrium', 'The Lobby', 'The Foyer', 'The Vestibule'],
+    correctAnswer: 1,
+  ),
+  '1_2': QuestionData(
+    question: 'What is the name of the large lecture hall on the first floor?',
+    imagePath: 'assets/lecture_hall.jpg',
+    options: ['Room 101', 'Room 102', 'Room 103', 'Room 104'],
+    correctAnswer: 2,
+  ),
+  // Add more questions for first floor...
+
+  // Second Floor Questions
+  '2_1': QuestionData(
+    question: 'What is the name of the computer lab on the second floor?',
+    imagePath: 'assets/computer_lab.jpg',
+    options: [
+      'The Digital Lab',
+      'The Computing Center',
+      'The Tech Hub',
+      'The Computer Room',
+    ],
+    correctAnswer: 0,
+  ),
+  '2_2': QuestionData(
+    question: 'What is the name of the study area on the second floor?',
+    imagePath: 'assets/study_area.jpg',
+    options: [
+      'The Study Zone',
+      'The Learning Center',
+      'The Academic Space',
+      'The Study Room',
+    ],
+    correctAnswer: 1,
+  ),
+  // Add more questions for second floor...
+
+  // Third Floor Questions
+  '3_1': QuestionData(
+    question: 'What is the name of the conference room on the third floor?',
+    imagePath: 'assets/conference_room.jpg',
+    options: [
+      'The Meeting Room',
+      'The Conference Center',
+      'The Board Room',
+      'The Assembly Room',
+    ],
+    correctAnswer: 2,
+  ),
+  '3_2': QuestionData(
+    question: 'What is the name of the faculty office area on the third floor?',
+    imagePath: 'assets/faculty_offices.jpg',
+    options: [
+      'The Faculty Wing',
+      'The Professor\'s Area',
+      'The Academic Offices',
+      'The Faculty Section',
+    ],
+    correctAnswer: 0,
+  ),
+  // Add more questions for third floor...
+};
+
+class QuestionScreen extends StatefulWidget {
   final int questionNumber;
   final int floor;
 
@@ -748,6 +830,32 @@ class QuestionScreen extends StatelessWidget {
     required this.questionNumber,
     required this.floor,
   });
+
+  @override
+  State<QuestionScreen> createState() => _QuestionScreenState();
+}
+
+class _QuestionScreenState extends State<QuestionScreen> {
+  int? selectedAnswer;
+  bool showFeedback = false;
+
+  QuestionData get questionData {
+    final key = '${widget.floor}_${widget.questionNumber}';
+    return questions[key] ??
+        QuestionData(
+          question: 'Question not found',
+          imagePath: 'assets/placeholder.jpg',
+          options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+          correctAnswer: 0,
+        );
+  }
+
+  void _handleAnswerSelection(int answer) {
+    setState(() {
+      selectedAnswer = answer;
+      showFeedback = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -765,24 +873,159 @@ class QuestionScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: Text('Question $questionNumber')),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'This is a placeholder for Question $questionNumber',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w400,
-                  ),
-                  textAlign: TextAlign.center,
+        appBar: AppBar(title: Text('Question ${widget.questionNumber}')),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Question Text
+              Text(
+                questionData.question,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF461D7C),
                 ),
-                const SizedBox(height: 20),
+              ),
+              const SizedBox(height: 20),
+
+              // Image
+              Container(
+                width: double.infinity,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    questionData.imagePath,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Center(
+                        child: Icon(Icons.image, size: 50, color: Colors.grey),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Multiple Choice Answers
+              const Text(
+                'Select your answer:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'Proximanova',
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF461D7C),
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              // Answer Options
+              for (int i = 0; i < questionData.options.length; i++) ...[
                 ElevatedButton(
+                  onPressed:
+                      showFeedback ? null : () => _handleAnswerSelection(i),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        showFeedback
+                            ? (i == questionData.correctAnswer
+                                ? Colors.green.withOpacity(0.2)
+                                : (i == selectedAnswer
+                                    ? Colors.red.withOpacity(0.2)
+                                    : Colors.white))
+                            : Colors.white,
+                    foregroundColor: const Color(0xFF461D7C),
+                    minimumSize: const Size(double.infinity, 60),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(
+                        color:
+                            showFeedback
+                                ? (i == questionData.correctAnswer
+                                    ? Colors.green
+                                    : (i == selectedAnswer
+                                        ? Colors.red
+                                        : const Color(0xFF461D7C)))
+                                : const Color(0xFF461D7C),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    questionData.options[i],
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Proximanova',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+
+              if (showFeedback) ...[
+                const SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color:
+                        selectedAnswer == questionData.correctAnswer
+                            ? Colors.green.withOpacity(0.1)
+                            : Colors.red.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color:
+                          selectedAnswer == questionData.correctAnswer
+                              ? Colors.green
+                              : Colors.red,
+                      width: 2,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(
+                        selectedAnswer == questionData.correctAnswer
+                            ? Icons.check_circle
+                            : Icons.cancel,
+                        color:
+                            selectedAnswer == questionData.correctAnswer
+                                ? Colors.green
+                                : Colors.red,
+                        size: 48,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        selectedAnswer == questionData.correctAnswer
+                            ? 'Correct! Well done!'
+                            : 'Incorrect. Try again!',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Proximanova',
+                          fontWeight: FontWeight.w600,
+                          color:
+                              selectedAnswer == questionData.correctAnswer
+                                  ? Colors.green
+                                  : Colors.red,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+
+              const SizedBox(height: 20),
+
+              // Back Button
+              Center(
+                child: ElevatedButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
@@ -800,8 +1043,8 @@ class QuestionScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
