@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,35 +36,11 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF461D7C),
-          foregroundColor: Color(0xFFFDD023), // For text and icons
-          titleTextStyle: TextStyle(
-            fontFamily: 'Proximanova',
-            fontWeight: FontWeight.w800,
-            fontSize: 20,
-            color: Color(0xFFFDD023),
-          ),
+          foregroundColor: Colors.white, // For text and icons
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Color(0xFF461D7C),
           unselectedItemColor: Colors.grey,
-        ),
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(
-            fontFamily: 'Proximanova',
-            fontWeight: FontWeight.w400,
-          ),
-          bodyMedium: TextStyle(
-            fontFamily: 'Proximanova',
-            fontWeight: FontWeight.w400,
-          ),
-          titleLarge: TextStyle(
-            fontFamily: 'Proximanova',
-            fontWeight: FontWeight.w700,
-          ),
-          headlineMedium: TextStyle(
-            fontFamily: 'Proximanova',
-            fontWeight: FontWeight.w800,
-          ),
         ),
       ),
       home: const MainScreen(),
@@ -194,37 +170,21 @@ class _MapScreenState extends State<MapScreen> {
                   onPressed: _currentFloor > 1 ? _previousFloor : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: const Color(0xFFFDD023),
+                    foregroundColor: Colors.white,
                   ),
-                  child: const Text(
-                    'Previous Floor',
-                    style: TextStyle(
-                      fontFamily: 'Proximanova',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: const Text('Previous Floor'),
                 ),
                 Text(
                   'Floor $_currentFloor',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 ElevatedButton(
                   onPressed: _currentFloor < 3 ? _nextFloor : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: const Color(0xFFFDD023),
+                    foregroundColor: Colors.white,
                   ),
-                  child: const Text(
-                    'Next Floor',
-                    style: TextStyle(
-                      fontFamily: 'Proximanova',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: const Text('Next Floor'),
                 ),
               ],
             ),
@@ -241,7 +201,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('LSU Scavenger Hunt')),
+      appBar: AppBar(title: const Text('Home')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -259,7 +219,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: const Color(0xFFFDD023),
+                  foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -267,11 +227,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Instructions',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               const SizedBox(height: 20), // Spacing between buttons
@@ -286,7 +242,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: const Color(0xFFFDD023),
+                  foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -294,11 +250,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'First Floor',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               const SizedBox(height: 20),
@@ -313,7 +265,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: const Color(0xFFFDD023),
+                  foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -321,11 +273,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Second Floor',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
               const SizedBox(height: 20),
@@ -340,7 +288,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF461D7C),
-                  foregroundColor: const Color(0xFFFDD023),
+                  foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -348,11 +296,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Third Floor',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
             ],
@@ -363,200 +307,136 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HelpButtonData {
-  final String label;
-  final IconData icon;
-  final VoidCallback onPressed;
-
-  HelpButtonData({
-    required this.label,
-    required this.icon,
-    required this.onPressed,
-  });
-}
-
-List<HelpButtonData> _helpButtons(BuildContext context) {
-  return [
-    HelpButtonData(
-      label: 'FAQ',
-      icon: Icons.question_answer,
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder:
-              (context) => AlertDialog(
-                title: const Text('FAQ'),
-                content: const Text(
-                  'Q: How do I use the app?\nA: Here\'s how...',
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('Close'),
-                  ),
-                ],
-              ),
-        );
-      },
-    ),
-    HelpButtonData(
-      label: 'Leave a Rating',
-      icon: Icons.star_rate,
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (context) => const RatingSheet(),
-        );
-      },
-    ),
-    HelpButtonData(
-      label: 'Watch Tutorial',
-      icon: Icons.play_circle_fill,
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const TutorialVideoDialog()),
-        );
-      },
-    ),
-    HelpButtonData(
-      label: 'Report a Bug',
-      icon: Icons.bug_report,
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder:
-              (context) => AlertDialog(
-                title: const Text('Report a Bug'),
-                content: const Text(
-                  'Please email antoinekaleb6@gmail.com with a description of the bug.',
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('OK'),
-                  ),
-                ],
-              ),
-        );
-      },
-    ),
-  ];
-}
-
-class HelpScreen extends StatefulWidget {
+class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
 
   @override
-  State<HelpScreen> createState() => _HelpScreenState();
-}
-
-class _HelpScreenState extends State<HelpScreen> {
-  final TextEditingController searchController = TextEditingController();
-  List<HelpButtonData> allButtons = [];
-  List<HelpButtonData> filteredButtons = [];
-
-  @override
-  void initState() {
-    super.initState();
-    allButtons = _helpButtons(context);
-    filteredButtons = List.from(allButtons);
-    searchController.addListener(_onSearchChanged);
-  }
-
-  void _onSearchChanged() {
-    final query = searchController.text.toLowerCase();
-    setState(() {
-      filteredButtons =
-          allButtons
-              .where((button) => button.label.toLowerCase().contains(query))
-              .toList();
-    });
-  }
-
-  @override
-  void dispose() {
-    searchController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final TextEditingController searchController = TextEditingController();
     return Scaffold(
-      backgroundColor: Color(0xFFF1EED8),
-      appBar: AppBar(title: const Text('Help Center')),
+      appBar: AppBar(title: const Text('Help')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const Center(
-              child: Text(
-                "We're here to help",
-                style: TextStyle(
-                  fontSize: 60,
-                  fontFamily: "Proximanova",
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
+              child: Text("We're here to help", style: TextStyle(fontSize: 18)),
             ),
-            const SizedBox(height: 80),
+            const SizedBox(height: 20),
 
             // Search bar
-            Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: TextField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                    labelText: 'Search for help...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    suffixIcon: Icon(Icons.search),
-                  ),
-                ),
+            TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                labelText: 'Search for help...',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.search),
               ),
+              onChanged: (query) {
+                // Optional: implement keyword search within your help content
+              },
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
 
             // FAQ Button
             Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
+              spacing: 12.0, // horizontal spacing between buttons
+              runSpacing: 12.0, // vertical spacing between rows
               alignment: WrapAlignment.center,
               children: [
-                for (var buttonData in filteredButtons)
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.44,
-                    height: 120,
-                    child: ElevatedButton.icon(
-                      onPressed: buttonData.onPressed,
-                      icon: Icon(buttonData.icon, size: 28),
-                      label: Text(
-                        buttonData.label,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w200,
-                          fontStyle: FontStyle.italic,
-                          fontFamily: 'Proximanova',
+                SizedBox(
+                  width:
+                      MediaQuery.of(context).size.width *
+                      0.4, // adjust width as needed
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Navigate to FAQ screen or show dialog
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                              title: const Text('FAQ'),
+                              content: const Text(
+                                'Q: How do I use the app?\nA: Here’s how...',
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text('Close'),
+                                ),
+                              ],
+                            ),
+                      );
+                    },
+                    icon: const Icon(Icons.question_answer),
+                    label: const Text('FAQ'),
+                  ),
+                ),
+                // Leave a Rating
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => const RatingSheet(),
+                      );
+                    },
+                    icon: const Icon(Icons.star_rate),
+                    label: const Text('Leave a Rating'),
+                  ),
+                ),
+
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TutorialVideoScreen(),
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.all(12),
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primary.withOpacity(0.1),
-                        foregroundColor: Theme.of(context).colorScheme.primary,
-                        elevation: 0,
+                      );
+                    },
+                    icon: const Icon(Icons.play_circle_fill),
+                    label: const Text('Watch Tutorial Video'),
+                  ),
+                ),
+                // Report a Bug
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      // Replace with your bug report logic or URL
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                              title: const Text('Report a Bug'),
+                              content: const Text(
+                                'Please email support@yourapp.com with a description of the bug.',
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                      );
+                    },
+                    icon: const Icon(Icons.bug_report),
+                    label: const Text(
+                      'Report a Bug',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontFamily: "Proximanova",
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
+                ),
               ],
             ),
           ],
@@ -566,27 +446,26 @@ class _HelpScreenState extends State<HelpScreen> {
   }
 }
 
-class TutorialVideoDialog extends StatefulWidget {
-  const TutorialVideoDialog({super.key});
+class TutorialVideoScreen extends StatefulWidget {
+  const TutorialVideoScreen({super.key});
 
   @override
-  State<TutorialVideoDialog> createState() => _TutorialVideoDialogState();
+  State<TutorialVideoScreen> createState() => _TutorialVideoScreenState();
 }
 
-class _TutorialVideoDialogState extends State<TutorialVideoDialog> {
-  late VideoPlayerController _controller;
+class _TutorialVideoScreenState extends State<TutorialVideoScreen> {
+  late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
+    const videoUrl = 'https://youtu.be/DYzT-Pk6Ogw?si=7QEaf5pykbMKgvdn';
+    final videoId = YoutubePlayer.convertUrlToId(videoUrl)!;
 
-    _controller = VideoPlayerController.network(
-        'https://raw.githubusercontent.com/loraavie/branded_tour_app/bcea1741a540b5f914922875adb244192c15e56e/assets/lsuapptutorial.mp4',
-      )
-      ..initialize().then((_) {
-        setState(() {}); // update the UI when video is ready
-        _controller.play();
-      });
+    _controller = YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
+    );
   }
 
   @override
@@ -597,27 +476,13 @@ class _TutorialVideoDialogState extends State<TutorialVideoDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      contentPadding: const EdgeInsets.all(8),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.8,
-        height: 250,
-        child:
-            _controller.value.isInitialized
-                ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-                : const Center(child: CircularProgressIndicator()),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Close'),
-        ),
-      ],
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(controller: _controller),
+      builder:
+          (context, player) => Scaffold(
+            appBar: AppBar(title: const Text('Tutorial Video')),
+            body: Center(child: player),
+          ),
     );
   }
 }
@@ -706,14 +571,13 @@ class FirstFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) =>
-                                  QuestionScreen(questionNumber: i, floor: 1),
+                              (context) => QuestionScreen(questionNumber: i, floor: 1),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: const Color(0xFFFDD023),
+                      foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -721,11 +585,7 @@ class FirstFloorScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Question $i',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Proximanova',
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -740,14 +600,16 @@ class FirstFloorScreen extends StatelessWidget {
 }
 
 class QuestionScreen extends StatelessWidget {
+  final List<List<String>> tableData = const [
+    ["What is the name of the LSU Mascot?", "What is the name of the group of which this symbol belongs?", "Can you purchase monster energy drinks on this floor?",
+      "In what room is the Fanuc Robatic Arm?","In what floor can you purchase bluebooks?"],
+    ["What is the room number that contains the Among Us artwork on a whiteboard?", "What room contains the MMR machine?", "Which floor can this Musical Tesla Coil be found?"],
+    ["Which floor can the wall of trophies be found?", "What is the office number that contains the model airplane?", "Which room number has this funny chart placed on its door?"],
+  ];
   final int questionNumber;
   final int floor;
 
-  const QuestionScreen({
-    super.key,
-    required this.questionNumber,
-    required this.floor,
-  });
+  const QuestionScreen({super.key, required this.questionNumber, required this.floor});
 
   @override
   Widget build(BuildContext context) {
@@ -774,11 +636,7 @@ class QuestionScreen extends StatelessWidget {
               children: [
                 Text(
                   'This is a placeholder for Question $questionNumber',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
@@ -786,19 +644,13 @@ class QuestionScreen extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: const Color(0xFFFDD023),
+                    foregroundColor: Colors.white,
                     minimumSize: const Size(200, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
-                    'Back',
-                    style: TextStyle(
-                      fontFamily: 'Proximanova',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: const Text('Back'),
                 ),
               ],
             ),
@@ -814,6 +666,7 @@ class SecondFloorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MainLayout(
       selectedIndex: 1,
       onItemTapped: (index) {
@@ -842,14 +695,13 @@ class SecondFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) =>
-                                  QuestionScreen(questionNumber: i, floor: 2),
+                              (context) => QuestionScreen(questionNumber: i, floor:2),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: const Color(0xFFFDD023),
+                      foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -857,11 +709,7 @@ class SecondFloorScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Question $i',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Proximanova',
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -908,14 +756,13 @@ class ThirdFloorScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder:
-                              (context) =>
-                                  QuestionScreen(questionNumber: i, floor: 3),
+                              (context) => QuestionScreen(questionNumber: i, floor: 3),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: const Color(0xFFFDD023),
+                      foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -923,11 +770,7 @@ class ThirdFloorScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Question $i',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Proximanova',
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -967,103 +810,53 @@ class InstructionsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Welcome to the LSU Scavenger Hunt!',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF461D7C),
-                ),
+                'Welcome to the Scavenger Hunt!',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               const Text(
                 'How to Play:',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF461D7C),
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               const Text(
-                '1. Select a floor of Patrick F. Taylor Hall to explore',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF461D7C),
-                ),
+                '1. Select a floor from the home screen',
+                style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               const Text(
                 '2. Choose a question from that floor',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF461D7C),
-                ),
+                style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               const Text(
-                '3. Find the location mentioned in the question',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF461D7C),
-                ),
+                '3. Use the map to find the location mentioned in the question',
+                style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               const Text(
                 '4. Visit the location and look for information to answer the question',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF461D7C),
-                ),
+                style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
               const Text(
                 'Need Help?',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF461D7C),
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               const Text(
                 '• Use the map screen to navigate between floors and find locations',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF461D7C),
-                ),
+                style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               const Text(
                 '• Visit the help screen if you get stuck or need assistance',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF461D7C),
-                ),
+                style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Good Luck and Geaux Tigers!',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Proximanova',
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF461D7C),
-                ),
+                'Good Luck!',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
           ),
