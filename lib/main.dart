@@ -810,6 +810,7 @@ final Map<String, QuestionData> questions = {
     options: ['Room 1100', 'Room 1200', 'Room 1300', 'Room 1400'],
     correctAnswer: 2,
   ),
+
   // Add more questions for first floor...
 
   // Second Floor Questions
@@ -826,7 +827,7 @@ final Map<String, QuestionData> questions = {
   ),
   '2_2': QuestionData(
     question: 'What is the name of the study area on the second floor?',
-    imagePath: 'assets/study_area.jpg',
+    imagePath: 'study_area.jpg',
     options: [
       'The Study Zone',
       'The Learning Center',
