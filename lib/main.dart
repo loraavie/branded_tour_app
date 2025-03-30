@@ -412,7 +412,22 @@ List<HelpButtonData> _helpButtons(BuildContext context) {
                             (context) => AlertDialog(
                           title: const Text('FAQ'),
                           content: const Text(
-                  'Q: How do I use the app?\nA: Here\'s how...',
+                            'Q: What is this app?\n'
+                            '   A: It is a scavenger hunt centered app that focuses on exploring\n'
+                            '   Louisiana\'s State University Patrick F. Taylor Building.\n'
+                            'Q: How do I start the game?\n'
+                            '   A: To start just pick a floor and question based on the picture or question\n'
+                            '   go around the building and select the answer you believe is correct.\n'
+                            'Q: How do I use the app?\n'
+                            '   A: To return to the find where you are select the Maps button in the\n'
+                            '   navigation bar below.\n'
+                            '   To answer see the questions based on the floor, you have to answer select\n'
+                            '   the Home Button.\n'
+                            '   To see get help in other areas select the Help button.\n'
+                            'Q: How long should I wait for a reported bug to be fixed?\n'
+                            '   A: Our team will address any bugs reported within 24HRS.\n'
+                            'Q: How do I make a suggestion?\n'
+                            '   A: All suggestion can be made throught the same process as reporting a bug.\n'
                           ),
                           actions: [
                             TextButton(
