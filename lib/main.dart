@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:confetti/confetti.dart';
+import 'dart:math' show pi;
 import 'package:video_player/video_player.dart';
+
 
 void main() {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 
   // This widget is the root of your application.
   @override
@@ -72,10 +78,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class MainLayout extends StatelessWidget {
   final Widget child;
   final int selectedIndex;
   final Function(int) onItemTapped;
+
 
   const MainLayout({
     super.key,
@@ -83,6 +91,7 @@ class MainLayout extends StatelessWidget {
     required this.selectedIndex,
     required this.onItemTapped,
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -101,17 +110,22 @@ class MainLayout extends StatelessWidget {
   }
 }
 
+
 class MainScreen extends StatefulWidget {
   final int initialIndex;
 
+
   const MainScreen({super.key, this.initialIndex = 1});
+
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
+
 class _MainScreenState extends State<MainScreen> {
   late int _selectedIndex;
+
 
   @override
   void initState() {
@@ -119,17 +133,20 @@ class _MainScreenState extends State<MainScreen> {
     _selectedIndex = widget.initialIndex;
   }
 
+
   final List<Widget> _screens = [
     const MapScreen(),
     const HomeScreen(),
     const HelpScreen(),
   ];
 
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -141,13 +158,16 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
+
 // Screen Widgets
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
+
   @override
   State<MapScreen> createState() => _MapScreenState();
 }
+
 
 class _MapScreenState extends State<MapScreen> {
   int _currentFloor = 1;
@@ -157,6 +177,7 @@ class _MapScreenState extends State<MapScreen> {
     '3rdfloor.jpg',
   ];
 
+
   void _nextFloor() {
     setState(() {
       if (_currentFloor < 3) {
@@ -165,6 +186,7 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
+
   void _previousFloor() {
     setState(() {
       if (_currentFloor > 1) {
@@ -172,6 +194,7 @@ class _MapScreenState extends State<MapScreen> {
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +224,7 @@ class _MapScreenState extends State<MapScreen> {
                     style: TextStyle(
                       fontFamily: 'Proximanova',
                       fontWeight: FontWeight.w600,
-                    ),
+                  ),
                   ),
                 ),
                 Text(
@@ -223,7 +246,7 @@ class _MapScreenState extends State<MapScreen> {
                     style: TextStyle(
                       fontFamily: 'Proximanova',
                       fontWeight: FontWeight.w600,
-                    ),
+                  ),
                   ),
                 ),
               ],
@@ -235,8 +258,10 @@ class _MapScreenState extends State<MapScreen> {
   }
 }
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -380,66 +405,66 @@ List<HelpButtonData> _helpButtons(BuildContext context) {
     HelpButtonData(
       label: 'FAQ',
       icon: Icons.question_answer,
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder:
-              (context) => AlertDialog(
-                title: const Text('FAQ'),
-                content: const Text(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                          title: const Text('FAQ'),
+                          content: const Text(
                   'Q: How do I use the app?\nA: Here\'s how...',
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('Close'),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('Close'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
-        );
-      },
-    ),
     HelpButtonData(
       label: 'Leave a Rating',
       icon: Icons.star_rate,
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (context) => const RatingSheet(),
-        );
-      },
-    ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => const RatingSheet(),
+                      );
+                    },
+                  ),
     HelpButtonData(
       label: 'Watch Tutorial',
       icon: Icons.play_circle_fill,
-      onPressed: () {
-        Navigator.push(
-          context,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
           MaterialPageRoute(builder: (context) => const TutorialVideoDialog()),
-        );
-      },
-    ),
+                      );
+                    },
+                  ),
     HelpButtonData(
       label: 'Report a Bug',
       icon: Icons.bug_report,
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder:
-              (context) => AlertDialog(
-                title: const Text('Report a Bug'),
-                content: const Text(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                          title: const Text('Report a Bug'),
+                          content: const Text(
                   'Please email antoinekaleb6@gmail.com with a description of the bug.',
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('OK'),
-                  ),
-                ],
-              ),
-        );
-      },
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
     ),
   ];
 }
@@ -589,11 +614,13 @@ class _TutorialVideoDialogState extends State<TutorialVideoDialog> {
       });
   }
 
+
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -622,15 +649,19 @@ class _TutorialVideoDialogState extends State<TutorialVideoDialog> {
   }
 }
 
+
 class RatingSheet extends StatefulWidget {
   const RatingSheet({super.key});
+
 
   @override
   State<RatingSheet> createState() => _RatingSheetState();
 }
 
+
 class _RatingSheetState extends State<RatingSheet> {
   int _rating = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -673,13 +704,31 @@ class _RatingSheetState extends State<RatingSheet> {
   }
 }
 
-class FirstFloorScreen extends StatelessWidget {
+
+class FirstFloorScreen extends StatefulWidget {
   const FirstFloorScreen({super.key});
+
+
+  @override
+  State<FirstFloorScreen> createState() => _FirstFloorScreenState();
+}
+
+
+class _FirstFloorScreenState extends State<FirstFloorScreen> {
+  List<bool> completedQuestions = List.generate(5, (index) => false);
+
+
+  void markQuestionAsCompleted(int questionNumber) {
+    setState(() {
+      completedQuestions[questionNumber - 1] = true;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      selectedIndex: 1, // Home tab
+      selectedIndex: 1,
       onItemTapped: (index) {
         if (index != 1) {
           Navigator.pop(context);
@@ -705,15 +754,21 @@ class FirstFloorScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder:
-                              (context) =>
-                                  QuestionScreen(questionNumber: i, floor: 1),
+                          builder: (context) => QuestionScreen(
+                            questionNumber: i,
+                            floor: 0,
+                            onCorrectAnswer: () => markQuestionAsCompleted(i),
+                          ),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: const Color(0xFFFDD023),
+                      backgroundColor: completedQuestions[i - 1]
+                          ? const Color(0xFFFDD023)
+                          : const Color(0xFF461D7C),
+                      foregroundColor: completedQuestions[i - 1]
+                          ? const Color(0xFF461D7C)
+                          : const Color(0xFFFDD023),
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -738,9 +793,223 @@ class FirstFloorScreen extends StatelessWidget {
     );
   }
 }
-//removed the initial question
-class SecondFloorScreen extends StatelessWidget {
+
+
+class QuestionScreen extends StatefulWidget {
+  final List<List<String>> tableData = const [
+    ];
+  final List<List<String>> pictureData = const [
+
+  ];
+  final List<List<String>> answers = const [
+
+  ];
+
+
+  final int questionNumber;
+  final int floor;
+  final VoidCallback onCorrectAnswer;
+
+
+  const QuestionScreen({
+    super.key,
+    required this.questionNumber,
+    required this.floor,
+    required this.onCorrectAnswer,
+  });
+
+
+  @override
+  _QuestionScreenState createState() => _QuestionScreenState();
+}
+
+
+class _QuestionScreenState extends State<QuestionScreen> {
+  String? selectedAnswer;
+  late ConfettiController _confettiController;
+  bool isCorrect = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController = ConfettiController(duration: const Duration(seconds: 2));
+  }
+
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
+
+  List<List<String>> firstFloorChoices = [
+    //1stQ
+
+  ];
+  List<List<String>> secondFloorChoices = [
+    //2stQ
+
+  ];
+  List<List<String>> thirdFloorChoices = [
+    //3stQ
+    ];
+
+
+
+
+  void checkAnswer(String answer, String correct) {
+    setState(() {
+      selectedAnswer = answer;
+      isCorrect = answer == correct;
+    });
+
+
+    if (isCorrect) {
+      _confettiController.play();
+      widget.onCorrectAnswer(); // Call the callback when answer is correct
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.pop(context);
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Oops! Try Again."))
+      );
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    List<List<String>> flooranswers = firstFloorChoices;
+    if(widget.floor == 0){
+      flooranswers = firstFloorChoices;
+    }else if(widget.floor == 1){
+      flooranswers = secondFloorChoices;
+    }else if(widget.floor == 2){
+      flooranswers = thirdFloorChoices;
+    }
+    return Stack(
+      children: [
+        MainLayout(
+          selectedIndex: 1,
+          onItemTapped: (index) {
+            if (index != 1) {
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainScreen(initialIndex: index),
+                ),
+              );
+            }
+          },
+          child: Scaffold(
+            appBar: AppBar(title: Text('Question ${widget.questionNumber}')),
+            body: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0xFF461D7C), width: 5)
+                        ),
+                        child: Image(image: AssetImage(widget.pictureData[widget.floor][(widget.questionNumber-1)]),
+                            fit: BoxFit.cover
+                        ),
+                      ),
+                    ),
+                    Text(
+                      widget.tableData[widget.floor][(widget.questionNumber-1)],
+                      style: const TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    ),
+                    for (int i = 0; i < 4; i++) ...[
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: selectedAnswer == flooranswers[(widget.questionNumber-1)][i]
+                              ? (isCorrect ? Colors.green : Colors.red)
+                              : const Color(0xFF461D7C),
+                          foregroundColor: Colors.white,
+                          minimumSize: const Size(double.infinity, 60),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: Text(
+                          flooranswers[(widget.questionNumber-1)][i],
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF461D7C),
+                        foregroundColor: Colors.white,
+                        minimumSize: const Size(200, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text('Back'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: ConfettiWidget(
+            confettiController: _confettiController,
+            blastDirection: pi / 2,
+            maxBlastForce: 5,
+            minBlastForce: 1,
+            emissionFrequency: 0.05,
+            numberOfParticles: 50,
+            gravity: 0.1,
+            shouldLoop: false,
+            colors: const [
+              Color(0xFF461D7C), // LSU Purple
+              Color(0xFFFDD023), // LSU Gold
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+class SecondFloorScreen extends StatefulWidget {
   const SecondFloorScreen({super.key});
+
+
+  @override
+  State<SecondFloorScreen> createState() => _SecondFloorScreenState();
+}
+
+
+class _SecondFloorScreenState extends State<SecondFloorScreen> {
+  List<bool> completedQuestions = List.generate(3, (index) => false);
+
+
+  void markQuestionAsCompleted(int questionNumber) {
+    setState(() {
+      completedQuestions[questionNumber - 1] = true;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -765,21 +1034,27 @@ class SecondFloorScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 1; i <= 5; i++) ...[
+                for (int i = 1; i <= 3; i++) ...[
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder:
-                              (context) =>
-                                  QuestionScreen(questionNumber: i, floor: 2),
+                          builder: (context) => QuestionScreen(
+                            questionNumber: i,
+                            floor: 1,
+                            onCorrectAnswer: () => markQuestionAsCompleted(i),
+                          ),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: const Color(0xFFFDD023),
+                      backgroundColor: completedQuestions[i - 1]
+                          ? const Color(0xFFFDD023)
+                          : const Color(0xFF461D7C),
+                      foregroundColor: completedQuestions[i - 1]
+                          ? const Color(0xFF461D7C)
+                          : const Color(0xFFFDD023),
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -805,8 +1080,26 @@ class SecondFloorScreen extends StatelessWidget {
   }
 }
 
-class ThirdFloorScreen extends StatelessWidget {
+
+class ThirdFloorScreen extends StatefulWidget {
   const ThirdFloorScreen({super.key});
+
+
+  @override
+  State<ThirdFloorScreen> createState() => _ThirdFloorScreenState();
+}
+
+
+class _ThirdFloorScreenState extends State<ThirdFloorScreen> {
+  List<bool> completedQuestions = List.generate(4, (index) => false);
+
+
+  void markQuestionAsCompleted(int questionNumber) {
+    setState(() {
+      completedQuestions[questionNumber - 1] = true;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -831,21 +1124,27 @@ class ThirdFloorScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 1; i <= 5; i++) ...[
+                for (int i = 1; i <= 4; i++) ...[
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder:
-                              (context) =>
-                                  QuestionScreen(questionNumber: i, floor: 3),
+                          builder: (context) => QuestionScreen(
+                            questionNumber: i,
+                            floor: 2,
+                            onCorrectAnswer: () => markQuestionAsCompleted(i),
+                          ),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF461D7C),
-                      foregroundColor: const Color(0xFFFDD023),
+                      backgroundColor: completedQuestions[i - 1]
+                          ? const Color(0xFFFDD023)
+                          : const Color(0xFF461D7C),
+                      foregroundColor: completedQuestions[i - 1]
+                          ? const Color(0xFF461D7C)
+                          : const Color(0xFFFDD023),
                       minimumSize: const Size(double.infinity, 60),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -871,8 +1170,10 @@ class ThirdFloorScreen extends StatelessWidget {
   }
 }
 
+
 class InstructionsScreen extends StatelessWidget {
   const InstructionsScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -903,7 +1204,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -913,7 +1214,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -923,7 +1224,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -933,7 +1234,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -943,7 +1244,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -953,7 +1254,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -963,7 +1264,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w700,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -973,7 +1274,7 @@ class InstructionsScreen extends StatelessWidget {
                   fontFamily: 'Proximanova',
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF461D7C),
-                ),
+              ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -1002,3 +1303,4 @@ class InstructionsScreen extends StatelessWidget {
     );
   }
 }
+
