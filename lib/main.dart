@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:confetti/confetti.dart';
 import 'dart:math' show pi;
 import 'package:video_player/video_player.dart';
@@ -931,7 +930,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     ),
                     for (int i = 0; i < 4; i++) ...[
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          checkAnswer(
+                              flooranswers[(widget.questionNumber-1)][i],
+                              widget.answers[(widget.floor)][(widget.questionNumber-1)]);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: selectedAnswer == flooranswers[(widget.questionNumber-1)][i]
                               ? (isCorrect ? Colors.green : Colors.red)
