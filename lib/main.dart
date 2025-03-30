@@ -212,6 +212,16 @@ class _MapScreenState extends State<MapScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+
+                Text(
+                  'Floor $_currentFloor',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Proximanova',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
                 ElevatedButton(
                   onPressed: _currentFloor < 3 ? _nextFloor : null,
                   style: ElevatedButton.styleFrom(
@@ -757,15 +767,47 @@ final Map<String, QuestionData> questions = {
   // First Floor Questions
   '1_1': QuestionData(
     question:
-        'What is the name of the main entrance room in Patrick F. Taylor Hall?',
-    imagePath: 'assets/entrance.jpg',
-    options: ['The Atrium', 'The Lobby', 'The Foyer', 'The Vestibule'],
+        'Make your way to this location under the stairs to the second floor. What does the sticker on the floor say? ',
+    imagePath: 'IMG_0467.jpeg',
+    options: [
+      'Geaux Tigers',
+      'Geaux Communicate',
+      'Great Communication',
+      'Geaux Engineering',
+    ],
     correctAnswer: 1,
   ),
   '1_2': QuestionData(
-    question: 'What is the name of the large lecture hall on the first floor?',
-    imagePath: 'assets/lecture_hall.jpg',
-    options: ['Room 101', 'Room 102', 'Room 103', 'Room 104'],
+    question:
+        'What item cannot be found in one of the vending machines on the first floor?',
+    imagePath: 'IMG_0466.jpeg',
+    options: ['Monster Energy', 'Scantrons', 'Snickers', 'Pepsi'],
+    correctAnswer: 3,
+  ),
+  '1_3': QuestionData(
+    question:
+        'This statue can be found near the center of the first floor of the PFT. What organization does it represent?',
+    imagePath: 'IMG_0468.jpeg',
+    options: [
+      'Tau Beta Pi',
+      'Collegiate Professional Engineers',
+      'Society of Software Engineers',
+      'Pi Delta Phi',
+    ],
+    correctAnswer: 0,
+  ),
+  '1_4': QuestionData(
+    question:
+        'Locate this sign on the first floor of the PFT. What student group does it represent?',
+    imagePath: 'IMG_0489.jpeg',
+    options: ['Tiger Bots', 'Bengal Builds', 'Tiger Tech', 'Bengal Bots'],
+    correctAnswer: 3,
+  ),
+  '1_5': QuestionData(
+    question:
+        'This robot is located in one of the glass-enclosed classrooms on the first floor of the PFT. What is the room number?',
+    imagePath: 'IMG_0470.jpeg',
+    options: ['Room 1100', 'Room 1200', 'Room 1300', 'Room 1400'],
     correctAnswer: 2,
   ),
   // Add more questions for first floor...
