@@ -738,77 +738,7 @@ class FirstFloorScreen extends StatelessWidget {
     );
   }
 }
-
-class QuestionScreen extends StatelessWidget {
-  final int questionNumber;
-  final int floor;
-
-  const QuestionScreen({
-    super.key,
-    required this.questionNumber,
-    required this.floor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return MainLayout(
-      selectedIndex: 1,
-      onItemTapped: (index) {
-        if (index != 1) {
-          Navigator.pop(context);
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MainScreen(initialIndex: index),
-            ),
-          );
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(title: Text('Question $questionNumber')),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'This is a placeholder for Question $questionNumber',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'Proximanova',
-                    fontWeight: FontWeight.w400,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF461D7C),
-                    foregroundColor: const Color(0xFFFDD023),
-                    minimumSize: const Size(200, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Text(
-                    'Back',
-                    style: TextStyle(
-                      fontFamily: 'Proximanova',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
+//removed the initial question
 class SecondFloorScreen extends StatelessWidget {
   const SecondFloorScreen({super.key});
 
