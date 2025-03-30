@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:confetti/confetti.dart';
 import 'dart:math' show pi;
 import 'package:video_player/video_player.dart';
@@ -845,11 +846,17 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   List<List<String>> firstFloorChoices = [
     //1stQ
-
+    ["1344","1378","1200","1201"],
+    ["Beta Pi","Pi Beta Tau","Tau Beta Pi","Tau Beta"],
+    ["1st Floor","2nd Floor","3rd Floor","All of Them"],
+    ["1344","1300","1200","1100"],
+    ["1st Floor","2nd Floor","3rd Floor","All of Them"]
   ];
   List<List<String>> secondFloorChoices = [
     //2stQ
-
+    ["2317","2371","2300","2902"],
+    ["2348","2370","2150","2349"],
+    ["Mike","Micheal","Nick","Tigers"]
   ];
   List<List<String>> thirdFloorChoices = [
     //3stQ
