@@ -836,6 +836,38 @@ final Map<String, QuestionData> questions = {
     ],
     correctAnswer: 1,
   ),
+  '2_3': QuestionData(
+    question:
+        'This drawing is located in one of the rooms on the second floor of PFT. What is the room number?',
+    imagePath: 'IMG_0482.jpeg',
+    options: ['Room 2214', 'Room 2317', 'Room 2412', 'Room 2110'],
+    correctAnswer: 1,
+  ),
+  '2_4': QuestionData(
+    question:
+        'What is the name of this machine located on the second floor of PFT?',
+    imagePath: 'IMG_0473.jpeg',
+    options: [
+      'The IEC Machine',
+      'The MRNA Machine',
+      'The NRA Machine',
+      'The MMR Machine',
+    ],
+    correctAnswer: 3,
+  ),
+  '2_5': QuestionData(
+    question:
+        'What is the name of the lab that features a black car for driving simulations?',
+    imagePath: '',
+    options: [
+      'Civil Engineering Driving Simulator Lab',
+      'Transportation Engineering Simulation Center',
+      'Civil Engineering Vehicle Simulation Lab',
+      'Civil Systems Driving Research Lab',
+    ],
+    correctAnswer: 0,
+  ),
+
   // Add more questions for second floor...
 
   // Third Floor Questions
